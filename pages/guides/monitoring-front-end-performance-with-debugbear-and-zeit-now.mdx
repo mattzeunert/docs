@@ -1,0 +1,115 @@
+import Guide from '~/components/layout/guide'
+import { Image } from '~/components/media'
+import Caption from '~/components/text/caption'
+import Note from '~/components/text/note'
+import DeploySection from '~/components/guides/deploy-section'
+
+export const meta = {
+  title: 'Monitor front-end performance with DebugBear and ZEIT Now',
+  description:
+    'Automatically test each deployment and report results to GitHub',
+  published: '2020-03-27T12:00:00Z',
+  authors: ['mattzeunert'],
+  url: '/guides/monitoring-front-end-performance-with-debugbear-and-zeit-now',
+  image: 'TODO',
+  editUrl:
+    'pages/guides/monitoring-front-end-performance-with-debugbear-and-zeit-now.mdx',
+  lastEdited: '2020-03-28T09:26:49.000Z'
+}
+
+[DebugBear](https://www.debugbear.com/) is a website monitoring tool that helps developers keep track of site performance and [Lighthouse](https://developers.google.com/web/tools/lighthouse) scores.
+
+This guide explains how to set up continuous monitoring for your production site, as well as automatic testing of each deployment.
+
+## Step 1: Deploy with ZEIT Now
+
+<DeploySection meta={meta} />
+
+## Step 2: Install the DebugBear ZEIT integration
+
+Go to the [DebugBear integration](https://zeit.co/integrations/debugbear) in the ZEIT Integrations Marketplace and add it to your account.
+
+You need to select the account or team your ZEIT project belongs to, and will then be redirected to the DebugBear website.
+
+## Step 3: Set up a DebugBear account
+
+If you don't have a DebugBear account already, click **Create account** to automatically sign up with your ZEIT email address. Otherwise you can continue with your existing account.
+
+Select which of your ZEIT projects you'd like to monitor and then click **Set up**.
+
+DebugBear will automatically start monitoring the project homepage and up to 3 other pages on your site.
+
+<Image
+  src={`${
+    process.env.ASSETS
+  }/guides/monitoring-front-end-performance-with-debugbear-and-zeit-now/continuous-monitoring.png`}
+  width={1067 / 2}
+  height={727 / 2}
+  oversize
+  shadow
+/>
+<Caption>DebugBear dashboard showing daily monitoring data.</Caption>
+
+By default these pages are tested once a day from a US-based server, but you can change these settings later. You can also add additional pages you'd like to monitor.
+
+### Testing ZEIT deployments
+
+DebugBear will automatically test each deployment in the ZEIT project you selected during setup.
+
+You can see test results for your deployment in any of these places:
+
+- On the integration configuration page on ZEIT
+- In the project Builds tab on DebugBear
+- Posted to a [Slack](https://www.debugbear.com/docs/slack-integration#api-builds) channel
+- On GitHub (see below)
+
+<Image
+  src={`${
+    process.env.ASSETS
+  }/guides/monitoring-front-end-performance-with-debugbear-and-zeit-now/zeit-builds.png`}
+  width={1330 / 2}
+  height={666 / 2}
+  oversize
+  shadow
+/>
+<Caption>Viewing build results on the ZEIT integration configuration page</Caption>
+
+<Note type="success" label="hint">
+  If you see a drop in your SEO score this may be because DebugBear is comparing
+  a preview deployment that's blocked from indexing to the production site.
+</Note>
+
+#### Selecting what pages to test as part of a deployment
+
+You can [configure](https://www.debugbear.com/docs/zeit#url-filter) which of your monitored pages should be tested after each deployment. Normally you don't need to change anything here, but if you use a custom deployment suffix other than `now.sh` you'll need to specifiy it.
+
+#### Build statuses
+
+By default all DebugBear tests will finish in a `neutral` state. To get meaningful `pass` or `failure` results you need to set up a [performance budget](https://www.debugbear.com/docs/performance-budgets) that defines metric thresholds that shouldn't be exceeded.
+
+## Step 4: Report build statuses to GitHub
+
+To view DebugBear build statuses on your GitHub pull requests you need to [install the DebugBear GitHub app](https://www.debugbear.com/docs/github-integration).
+
+First, go to the **Integrations** tab of your DebugBear project and connect your user account to GitHub.
+
+Then click **Install Github integration** and grant access to the repository that contains your ZEIT site.
+
+After your next deployment you'll see one commit status on your GitHub pull request for each tested page.
+
+<Image
+  src={`${
+    process.env.ASSETS
+  }/guides/monitoring-front-end-performance-with-debugbear-and-zeit-now/github-statuses.png`}
+  width={1244 / 2}
+  height={648 / 2}
+  oversize
+  shadow
+/>
+<Caption>GitHub commit statuses for a ZEIT deployment.</Caption>
+
+export default ({ children }) => <Guide meta={meta}>{children}</Guide>
+
+export const config = {
+  amp: 'hybrid'
+}
