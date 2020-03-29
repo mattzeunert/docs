@@ -14,7 +14,7 @@ export const meta = {
   image: 'TODO',
   editUrl:
     'pages/guides/monitoring-front-end-performance-with-debugbear-and-zeit-now.mdx',
-  lastEdited: '2020-03-28T09:26:49.000Z'
+  lastEdited: '2020-03-29T11:35:26.000Z'
 }
 
 [DebugBear](https://www.debugbear.com/) is a website monitoring tool that helps developers keep track of site performance and [Lighthouse](https://developers.google.com/web/tools/lighthouse) scores.
@@ -29,7 +29,29 @@ This guide explains how to set up continuous monitoring for your production site
 
 Go to the [DebugBear integration](https://zeit.co/integrations/debugbear) in the ZEIT Integrations Marketplace and add it to your account.
 
-You need to select the account or team your ZEIT project belongs to, and will then be redirected to the DebugBear website.
+<Image
+  src={`${
+    process.env.ASSETS
+  }/guides/monitoring-front-end-performance-with-debugbear-and-zeit-now/debugbear-integration.png`}
+  width={1206 / 2}
+  height={416 / 2}
+  oversize
+  shadow
+/>
+<Caption>DebugBear in the ZEIT integration marketplace.</Caption>
+
+You'll need to select the account or team your ZEIT project belongs to, and will then be redirected to the DebugBear website.
+
+<Image
+  src={`${
+    process.env.ASSETS
+  }/guides/monitoring-front-end-performance-with-debugbear-and-zeit-now/select-zeit-team.png`}
+  width={1300 / 2}
+  height={1226 / 2}
+  oversize
+  shadow
+/>
+<Caption>Grant DebugBear access to the account that your website belongs to.</Caption>
 
 ## Step 3: Set up a DebugBear account
 
