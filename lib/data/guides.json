@@ -1,13 +1,13 @@
 [
   {
-    "title": "Monitor front-end performance with DebugBear and ZEIT Now",
+    "title": "Monitor Frontend Performance with DebugBear and ZEIT Now",
     "description": "Automatically test each deployment and report results to GitHub",
     "published": "2020-03-27T12:00:00Z",
     "authors": ["mattzeunert"],
-    "url": "/guides/monitoring-front-end-performance-with-debugbear-and-zeit-now",
+    "url": "/guides/monitor-frontend-performance-with-debugbear-and-zeit-now",
     "image": "TODO",
-    "editUrl": "pages/guides/monitoring-front-end-performance-with-debugbear-and-zeit-now.mdx",
-    "lastEdited": "2020-03-29T11:49:10.000Z"
+    "editUrl": "pages/guides/monitor-frontend-performance-with-debugbear-and-zeit-now.mdx",
+    "lastEdited": "2020-03-31T15:53:22.000Z"
   },
   {
     "title": "Create and Deploy a TakeShape Blog with ZEIT Now",
