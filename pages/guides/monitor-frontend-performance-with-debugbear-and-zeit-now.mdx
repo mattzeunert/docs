@@ -14,7 +14,7 @@ export const meta = {
   image: 'TODO',
   editUrl:
     'pages/guides/monitor-frontend-performance-with-debugbear-and-zeit-now.mdx',
-  lastEdited: '2020-04-01T07:52:00.000Z'
+  lastEdited: '2020-04-01T08:08:05.000Z'
 }
 
 [DebugBear](https://www.debugbear.com/) is a website monitoring tool that helps developers keep track of site performance and [Lighthouse](https://developers.google.com/web/tools/lighthouse) scores.
@@ -75,16 +75,16 @@ By default these pages are tested once a day from a US-based server, but you can
 />
 <Caption>DebugBear dashboard showing daily monitoring data.</Caption>
 
-### Testing ZEIT deployments
+### Step 4: Push changes on a branch
 
-DebugBear will automatically test each deployment in the ZEIT project you selected during setup.
+Make some changes to your project, then push the branch to your git repository. ZEIT will create a preview deployment, and DebugBear will test the performance of the deployed site.
 
 You can see test results for your deployment in any of these places:
 
 - On the integration configuration page on ZEIT
 - In the project Builds tab on DebugBear
 - Posted to a [Slack](https://www.debugbear.com/docs/slack-integration#api-builds) channel
-- Or, on GitHub (described in [Step 4](#step-4:-report-build-statuses-to-github))
+- Or, on GitHub (described in [the next section](#option:-sending-reports-to-github))
 
 <Image
   src={`${
@@ -104,19 +104,19 @@ You can see test results for your deployment in any of these places:
 
 #### Selecting what pages to test as part of a deployment
 
-You can [configure](https://www.debugbear.com/docs/zeit#url-filter) which of your monitored pages should be tested after each deployment. Normally you don't need to change anything here, but if you use a custom deployment suffix other than `now.sh` you'll need to specifiy it.
+You can [configure](https://www.debugbear.com/docs/zeit#url-filter) which of your monitored pages should be tested after each deployment. Normally you don't need to change anything here, but if you use a custom deployment suffix other than `now.sh` you need to specifiy it.
 
 #### Build statuses
 
 By default all DebugBear tests will finish in a `neutral` state. To get meaningful `pass` or `failure` results you need to set up a [performance budget](https://www.debugbear.com/docs/performance-budgets) that defines metric thresholds that shouldn't be exceeded.
 
-## Step 4: Report build statuses to GitHub
+## Option: Sending Reports to GitHub
 
-To view DebugBear build statuses on your GitHub pull requests you need to [install the DebugBear GitHub app](https://www.debugbear.com/docs/github-integration).
+If you use GitHub DebugBear can report test results directly on your pull request. You need to [install the DebugBear GitHub app](https://www.debugbear.com/docs/github-integration).
 
-First, go to the **Integrations** tab of your DebugBear project and connect your user account to GitHub.
+1. Go to the **Integrations** tab of your DebugBear project and connect your user account to GitHub.
 
-Then click **Install Github integration** and grant access to the repository that contains your ZEIT site.
+2. Click **Install Github integration** and grant access to the repository that contains your ZEIT site.
 
 After your next deployment you'll see one commit status on your GitHub pull request for each tested page.
 
